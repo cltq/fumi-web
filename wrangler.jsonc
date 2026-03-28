@@ -1,7 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "main": ".open-next/worker.js",
-  "name": "fumi",
+  "name": "fumi-web",
   "compatibility_date": "2026-03-17",
   "compatibility_flags": [
     "nodejs_compat"
@@ -13,7 +13,7 @@
   "services": [
     {
       "binding": "WORKER_SELF_REFERENCE",
-      "service": "fumi"
+      "service": "fumi-web"
     }
   ],
   "images": {
