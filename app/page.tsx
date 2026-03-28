@@ -19,7 +19,7 @@ export default function Home() {
             Welcome to Fumi
           </h1>
           <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Use the Dynamic Island navigation at the top to switch between Home, About, and Test.
+            Welcome to my personal website! But unforunately, it's still a work in progress. เว็บไซต์ส่วนตัวยังอยู่ในระหว่างการพัฒนา โปรดกลับมาใหม่ในภายหลัง.
           </p>
         </div>
         <div className="w-full max-w-sm aspect-[340/120]">

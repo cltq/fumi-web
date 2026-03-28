@@ -7,7 +7,7 @@ export default function TestPage() {
       <main className="flex min-h-screen flex-col items-center justify-center p-8">
         <h1 className="text-4xl font-semibold mb-4">Test Page</h1>
         <p className="max-w-xl text-center text-xl">
-          The navigation island above should keep highlighting the current route and allow you to switch pages.
+          Placeholder Right now.
         </p>
       </main>
     </div>

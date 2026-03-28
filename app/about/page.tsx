@@ -7,7 +7,7 @@ export default function AboutPage() {
       <main className="flex min-h-screen flex-col items-center justify-center p-8">
         <h1 className="text-4xl font-semibold mb-4">About Page</h1>
         <p className="max-w-xl text-center text-xl">
-          This is the About route. Use the island navigation to move between pages.
+          This is the About route. Placeholder Right now.
         </p>
       </main>
     </div>
