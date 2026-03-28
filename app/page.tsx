@@ -20,6 +20,7 @@ export default function Home() {
           </h1>
           <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
             Welcome to my personal website! But unforunately, it's still a work in progress. เว็บไซต์ส่วนตัวยังอยู่ในระหว่างการพัฒนา โปรดกลับมาใหม่ในภายหลัง.
+            Visit my bio: <a href="https://haunt.gg/fumi" className="text-blue-500 hover:underline">Here</a>
           </p>
         </div>
         <div className="w-full max-w-sm aspect-[340/120]">
