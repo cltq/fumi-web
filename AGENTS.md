@@ -127,6 +127,7 @@ This project does not currently have a test suite. If adding tests:
 - Make a commit with message every time there's a code change, but don't push
 
 ## Agent History
+- Use **Asia/Bangkok** or **GMT+7** timezone for timestamps
 - Log every agent action in `HISTORY.md` with timestamp and description
 - HISTORY.md should log everything that is requested through agent
 - Log every git action in `GIT_HISTORY.md` with timestamp and description
