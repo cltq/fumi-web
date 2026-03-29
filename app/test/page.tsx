@@ -1,5 +1,5 @@
-import Navbar from "../components/cNavbar";
-import Footer from "../components/cFooter";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 export default function TestPage() {
   return (
