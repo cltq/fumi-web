@@ -51,3 +51,4 @@
 - Commit - "Update: Add user request to AGENTS_HISTORY.md - Files changed: AGENTS_HISTORY.md"
 - Commit - "Update: Fix timestamps in GIT_HISTORY.md - Files changed: GIT_HISTORY.md"
 - Commit - "Update: Remove timestamps from GIT_HISTORY.md - Files changed: GIT_HISTORY.md"
+- Commit - "Update: Add auto-update note and commit logging to AGENTS.md - Files changed: AGENTS.md"
