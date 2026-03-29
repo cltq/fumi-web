@@ -128,7 +128,7 @@ This project does not currently have a test suite. If adding tests:
 
 ## Git
 - Commit with message every time the code or files changed
-- Commit message format: "User requested: [user message] - Files changed: [list of files]"
+- Commit message format: "Update: [user message] - Files changed: [list of files]"
 - Exception: AGENTS.md, CLAUDE.md, GEMINI.md should commit with message and push automatically if changed
 - If "git status" shows local commits NOT present with remote, push GIT_HISTORY.md and AGENTS_HISTORY.md
 
