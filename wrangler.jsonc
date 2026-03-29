@@ -24,8 +24,11 @@
   },
   "routes": [
     {
-      "pattern": "fumi.moocom.site", 
+      "pattern": "fumi.moocom.site",
       "custom_domain": true
+    },
+    {
+      "pattern": "fumi-web.xfumi.workers.dev"
     }
   ]
 }
