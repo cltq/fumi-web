@@ -10,3 +10,4 @@
 - **14:30**: Updated GIT_HISTORY.md with all git commits
 - **14:30**: Created CURSOR.md and OPENCODE.md agent files referencing AGENTS.md
 - **14:30**: Agent: opencode | User requested: "the Agent should USE time from Asia/Bangkok or GMT+7 As MAIN agent time for every session" | Agent response: Added "Use Asia/Bangkok or GMT+7 timezone as the main timezone for every session" to General section in AGENTS.md, removed duplicate from Agent History section | Action: Updated AGENTS.md
+- **14:30**: Agent: opencode | User requested: "dont put like 'User requested: ' use 'Update: ' instead and logs the user requested to AGENTS_HISTORY.md also remove CURSOR.md and improve every agents.md" | Agent response: Changed commit format from "User requested:" to "Update:", removed CURSOR.md, improved OPENCODE.md/CLAUDE.md/GEMINI.md with specific instructions | Action: Updated AGENTS.md, OPENCODE.md, CLAUDE.md, GEMINI.md, removed CURSOR.md
