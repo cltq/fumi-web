@@ -7,6 +7,7 @@ Fumi is a personal website built with Next.js 16 (App Router), React 19, TypeScr
 
 ## General
 - Use **Asia/Bangkok** or **GMT+7** timezone as the main timezone for every session
+- When task is done, summarize: 1) Changes made 2) How many commits
 
 ---
 
