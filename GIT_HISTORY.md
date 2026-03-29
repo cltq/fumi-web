@@ -41,3 +41,5 @@
 - **14:30**: Commit - "User requested: Add timezone to main agent time - Files changed: AGENTS_HISTORY.md"
 - **14:30**: Commit - "Update: Change commit format to 'Update:' and improve all agent files - Files changed: AGENTS.md, CURSOR.md (removed), OPENCODE.md, CLAUDE.md, GEMINI.md"
 - **14:30**: Commit - "Update: Log user request to AGENTS_HISTORY.md - Files changed: AGENTS_HISTORY.md"
+- **14:30**: Commit - "Update: Add summary guideline at end of tasks - Files changed: AGENTS.md"
+- **14:30**: Commit - "Update: Add user request to AGENTS_HISTORY.md - Files changed: AGENTS_HISTORY.md"
