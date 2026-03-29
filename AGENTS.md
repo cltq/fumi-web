@@ -7,7 +7,7 @@ Fumi is a personal website built with Next.js 16 (App Router), React 19, TypeScr
 
 ## General
 - Use **Asia/Bangkok** or **GMT+7** timezone as the main timezone for every session
-- When task is done, summarize: 1) Changes made 2) How many commits 3) How many ongoing all commits
+- When task is done, summarize: 1) Changes made 2) How many commits 3) How many ongoing all commits (local commits not pushed from git status)
 
 ---
 
@@ -130,7 +130,7 @@ This project does not currently have a test suite. If adding tests:
 ## Git
 - Commit with message every time the code or files changed
 - Commit message format: "Update: [user message] - Files changed: [list of files]"
-- Exception: AGENTS.md, CLAUDE.md, GEMINI.md should commit with message and push automatically if changed
+- Exception: AGENTS.md, .agents/CLAUDE.md, .agents/GEMINI.md should commit with message and push automatically if changed
 - If "git status" shows local commits NOT present with remote, push GIT_HISTORY.md and AGENTS_HISTORY.md
 
 ## Agent History
