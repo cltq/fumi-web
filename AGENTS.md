@@ -1,5 +1,7 @@
 # Agent Guidelines for Fumi
 
+> **Note:** Every time in a different project, if the following AGENTS.md doesn't match the current project structure, update it automatically.
+
 ## Project Overview
 Fumi is a personal website built with Next.js 16 (App Router), React 19, TypeScript, and Tailwind CSS v4. It uses Cloudflare Workers for deployment via `@opennextjs/cloudflare`.
 
@@ -131,6 +133,7 @@ This project does not currently have a test suite. If adding tests:
 ## Git
 - Commit with message every time the code or files changed
 - Commit message format: "Update: [user message] - Files changed: [list of files]"
+- Log every commit in `GIT_HISTORY.md` with timestamp, description, and files changed
 - Exception: AGENTS.md, .agents/CLAUDE.md, .agents/GEMINI.md should commit with message and push automatically if changed
 - If "git status" shows local commits NOT present with remote, push GIT_HISTORY.md and AGENTS_HISTORY.md
 
