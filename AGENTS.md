@@ -125,3 +125,6 @@ This project does not currently have a test suite. If adding tests:
 - Only commit when "commit" in the message
 - only commit and push when "commit and push" in the message
 - Make a commit with message every time there's a code change, but don't push
+
+## Agent History
+- Log every agent action in `AGENTS_HISTORY.md` with timestamp and description
