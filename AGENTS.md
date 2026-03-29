@@ -41,10 +41,10 @@ npm run cf-typegen    # Generate Cloudflare types
 - Use `ReactElement` instead of `JSX.Element` for type annotations
 
 ### Naming Conventions
-- **Components**: PascalCase (e.g., `cNavbar`, `Footer`)
+- **Components**: PascalCase (e.g., `Navbar`, `Footer`)
 - **Functions/Hooks**: camelCase (e.g., `useEffect`, `fetchSocials`)
 - **Constants**: camelCase or UPPER_SNAKE_CASE for truly global constants
-- **Files**: kebab-case for utilities, PascalCase for components (e.g., `c-footer.tsx`, `cNavbar.tsx`)
+- **Files**: kebab-case for utilities, PascalCase for components (e.g., `footer.tsx`, `Navbar.tsx`)
 - **CSS classes**: kebab-case in Tailwind (e.g., `rounded-[65px]`, `gap-4`)
 
 ### Imports
@@ -54,7 +54,7 @@ npm run cf-typegen    # Generate Cloudflare types
 ```typescript
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Navbar from "./components/cNavbar";
+import Navbar from "./components/Navbar";
 ```
 
 ### Components
@@ -120,3 +120,7 @@ This project does not currently have a test suite. If adding tests:
 - Primary deployment target: **Cloudflare Workers** via `@opennextjs/cloudflare`
 - Configuration: `wrangler.jsonc` for Cloudflare settings
 - Run `npm run deploy` to build and deploy
+
+## Git
+- Only commit when "commit" in the message
+- only commit and push when "commit and push" in the message
