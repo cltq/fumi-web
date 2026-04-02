@@ -5,6 +5,7 @@
 - Agent: opencode | User requested: "can you make the web page title have a little animations like typewriter" | Agent response: Created TypewriterTitle client component that types "Fumi | Portfolio" character by character in the browser tab title | Action: Created components/TypewriterTitle.tsx, Updated app/layout.tsx
 - Agent: opencode | User requested: "Remove '| Portfolio' and make the animation loops" | Agent response: Removed suffix, made animation loop continuously - types out then erases and repeats | Action: Updated components/TypewriterTitle.tsx
 - Agent: opencode | User requested: "when the title is empty or no letters. Make a invisible space to make the url doesnt show" | Agent response: Added zero-width space character when title is empty to prevent URL from showing | Action: Updated components/TypewriterTitle.tsx
+- Agent: opencode | User requested: "Build a smooth, modern typewriter animation component..." | Agent response: Rebuilt TypewriterTitle with randomized timing, blinking cursor, multiple phrases support, smooth typing/deleting loop, blank document.title when empty | Action: Updated components/TypewriterTitle.tsx
 
 ## 2026-03-30
 

@@ -1,40 +1,95 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
-const fullTitle = "Fumi";
+interface TypewriterProps {
+  phrases: string[];
+  typingSpeed?: number;
+  deletingSpeed?: number;
+  pauseDuration?: number;
+  cursorChar?: string;
+  cursorBlinkSpeed?: number;
+}
 
-export default function TypewriterTitle() {
-  const iRef = useRef(0);
-  const directionRef = useRef<"forward" | "backward">("forward");
+export default function Typewriter({
+  phrases,
+  typingSpeed = 80,
+  deletingSpeed = 50,
+  pauseDuration = 1500,
+  cursorChar = "|",
+  cursorBlinkSpeed = 530,
+}: TypewriterProps) {
+  const [displayedText, setDisplayedText] = useState("");
+  const [isTyping, setIsTyping] = useState(true);
+  const [showCursor, setShowCursor] = useState(true);
 
-  useEffect(() => {
-    let timeout: ReturnType<typeof setTimeout>;
+  const phraseIndexRef = useRef(0);
+  const charIndexRef = useRef(0);
+  const isDeletingRef = useRef(false);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
-    const tick = () => {
-      if (directionRef.current === "forward") {
-        iRef.current++;
-        document.title = fullTitle.slice(0, iRef.current);
-        if (iRef.current >= fullTitle.length) {
-          directionRef.current = "backward";
-          timeout = setTimeout(tick, 1500);
-          return;
-        }
-      } else {
-        iRef.current--;
-        const title = fullTitle.slice(0, iRef.current) || "\u200B";
-        document.title = title;
-        if (iRef.current <= 0) {
-          directionRef.current = "forward";
-        }
-      }
-      timeout = setTimeout(tick, 120);
-    };
-
-    timeout = setTimeout(tick, 500);
-
-    return () => clearTimeout(timeout);
+  const getRandomDelay = useCallback((baseSpeed: number) => {
+    return baseSpeed + Math.random() * baseSpeed * 0.5 - baseSpeed * 0.25;
   }, []);
 
-  return null;
+  useEffect(() => {
+    const cursorInterval = setInterval(() => {
+      setShowCursor((prev) => !prev);
+    }, cursorBlinkSpeed);
+
+    return () => clearInterval(cursorInterval);
+  }, [cursorBlinkSpeed]);
+
+  useEffect(() => {
+    const tick = () => {
+      const currentPhrase = phrases[phraseIndexRef.current];
+      const currentLength = charIndexRef.current;
+
+      if (!isDeletingRef.current) {
+        if (currentLength < currentPhrase.length) {
+          charIndexRef.current++;
+          const newText = currentPhrase.slice(0, charIndexRef.current);
+          setDisplayedText(newText);
+          document.title = newText;
+          timeoutRef.current = setTimeout(tick, getRandomDelay(typingSpeed));
+        } else {
+          isDeletingRef.current = true;
+          timeoutRef.current = setTimeout(tick, pauseDuration);
+        }
+      } else {
+        if (currentLength > 0) {
+          charIndexRef.current--;
+          const newText = currentPhrase.slice(0, charIndexRef.current);
+          setDisplayedText(newText);
+          document.title = newText;
+          timeoutRef.current = setTimeout(tick, getRandomDelay(deletingSpeed));
+        } else {
+          isDeletingRef.current = false;
+          phraseIndexRef.current = (phraseIndexRef.current + 1) % phrases.length;
+          timeoutRef.current = setTimeout(tick, 300);
+        }
+      }
+    };
+
+    timeoutRef.current = setTimeout(tick, 500);
+
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      document.title = "";
+    };
+  }, [phrases, typingSpeed, deletingSpeed, pauseDuration, getRandomDelay]);
+
+  return (
+    <span className="inline-block">
+      <span>{displayedText}</span>
+      <span
+        className="inline-block w-[2px] h-[1em] bg-white ml-[2px] align-middle transition-opacity duration-100"
+        style={{ opacity: showCursor ? 1 : 0 }}
+      >
+        {cursorChar === "|" || cursorChar === "_" ? "" : cursorChar}
+      </span>
+    </span>
+  );
 }
