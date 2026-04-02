@@ -1,13 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface TypewriterProps {
   phrases?: string[];
   typingSpeed?: number;
   deletingSpeed?: number;
   pauseDuration?: number;
-  cursorChar?: string;
   cursorBlinkSpeed?: number;
 }
 
@@ -16,21 +15,15 @@ export default function Typewriter({
   typingSpeed = 80,
   deletingSpeed = 50,
   pauseDuration = 1500,
-  cursorChar = "|",
   cursorBlinkSpeed = 530,
 }: TypewriterProps) {
   const [displayedText, setDisplayedText] = useState("");
-  const [isTyping, setIsTyping] = useState(true);
   const [showCursor, setShowCursor] = useState(true);
 
   const phraseIndexRef = useRef(0);
   const charIndexRef = useRef(0);
   const isDeletingRef = useRef(false);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
-
-  const getRandomDelay = useCallback((baseSpeed: number) => {
-    return baseSpeed + Math.random() * baseSpeed * 0.5 - baseSpeed * 0.25;
-  }, []);
+  const timeoutIdRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const cursorInterval = setInterval(() => {
@@ -41,56 +34,58 @@ export default function Typewriter({
   }, [cursorBlinkSpeed]);
 
   useEffect(() => {
-    if (!phrases || phrases.length === 0) return;
+    const randomBetween = (min: number, max: number) => {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    };
 
     const tick = () => {
       const currentPhrase = phrases[phraseIndexRef.current];
-      const currentLength = charIndexRef.current;
+      const currentCharIndex = charIndexRef.current;
 
       if (!isDeletingRef.current) {
-        if (currentLength < currentPhrase.length) {
-          charIndexRef.current++;
+        if (currentCharIndex < currentPhrase.length) {
+          charIndexRef.current = currentCharIndex + 1;
           const newText = currentPhrase.slice(0, charIndexRef.current);
           setDisplayedText(newText);
           document.title = newText;
-          timeoutRef.current = setTimeout(tick, getRandomDelay(typingSpeed));
+          timeoutIdRef.current = setTimeout(tick, randomBetween(typingSpeed * 0.5, typingSpeed * 1.5));
         } else {
           isDeletingRef.current = true;
-          timeoutRef.current = setTimeout(tick, pauseDuration);
+          timeoutIdRef.current = setTimeout(tick, pauseDuration);
         }
       } else {
-        if (currentLength > 0) {
-          charIndexRef.current--;
+        if (currentCharIndex > 0) {
+          charIndexRef.current = currentCharIndex - 1;
           const newText = currentPhrase.slice(0, charIndexRef.current);
           setDisplayedText(newText);
           document.title = newText;
-          timeoutRef.current = setTimeout(tick, getRandomDelay(deletingSpeed));
+          timeoutIdRef.current = setTimeout(tick, randomBetween(deletingSpeed * 0.5, deletingSpeed * 1.5));
         } else {
           isDeletingRef.current = false;
           phraseIndexRef.current = (phraseIndexRef.current + 1) % phrases.length;
-          timeoutRef.current = setTimeout(tick, 300);
+          timeoutIdRef.current = setTimeout(tick, 300);
         }
       }
     };
 
-    timeoutRef.current = setTimeout(tick, 500);
+    timeoutIdRef.current = setTimeout(tick, 500);
 
     return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
+      if (timeoutIdRef.current) {
+        clearTimeout(timeoutIdRef.current);
       }
       document.title = "";
     };
-  }, [phrases, typingSpeed, deletingSpeed, pauseDuration, getRandomDelay]);
+  }, [phrases, typingSpeed, deletingSpeed, pauseDuration]);
 
   return (
-    <span className="inline-block">
-      <span>{displayedText}</span>
+    <span>
+      {displayedText}
       <span
-        className="inline-block w-[2px] h-[1em] bg-white ml-[2px] align-middle transition-opacity duration-100"
+        className="animate-pulse"
         style={{ opacity: showCursor ? 1 : 0 }}
       >
-        {cursorChar === "|" || cursorChar === "_" ? "" : cursorChar}
+        |
       </span>
     </span>
   );
