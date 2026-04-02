@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 const PHRASES = ["Fumi"];
 const TYPING_SPEED = 100;
@@ -8,18 +8,9 @@ const DELETING_SPEED = 60;
 const PAUSE_TIME = 1500;
 
 export default function TypewriterTitle() {
-  const [displayText, setDisplayText] = useState("");
-  const [showCursor, setShowCursor] = useState(true);
   const charIndexRef = useRef(0);
   const isDeletingRef = useRef(false);
   const phraseIndexRef = useRef(0);
-
-  useEffect(() => {
-    const cursorInterval = setInterval(() => {
-      setShowCursor((v) => !v);
-    }, 530);
-    return () => clearInterval(cursorInterval);
-  }, []);
 
   useEffect(() => {
     let timeoutId: ReturnType<typeof setTimeout>;
@@ -30,7 +21,6 @@ export default function TypewriterTitle() {
       if (!isDeletingRef.current) {
         charIndexRef.current++;
         const newText = phrase.slice(0, charIndexRef.current);
-        setDisplayText(newText);
         document.title = newText || "\u200B";
 
         if (charIndexRef.current >= phrase.length) {
@@ -42,7 +32,6 @@ export default function TypewriterTitle() {
       } else {
         charIndexRef.current--;
         const newText = phrase.slice(0, charIndexRef.current);
-        setDisplayText(newText);
         document.title = newText || "\u200B";
 
         if (charIndexRef.current <= 0) {
@@ -63,10 +52,5 @@ export default function TypewriterTitle() {
     };
   }, []);
 
-  return (
-    <span>
-      {displayText}
-      <span style={{ opacity: showCursor ? 1 : 0 }}>|</span>
-    </span>
-  );
+  return null;
 }

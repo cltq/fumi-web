@@ -11,6 +11,7 @@
 - Agent: opencode | Fix: "still nothing" | Agent response: Rewrote component with simpler implementation, removed useCallback, using inline random function, added pulse animation to cursor | Action: Updated components/TypewriterTitle.tsx
 - Agent: opencode | Fix: "shows localhost:3000 instead of animation" | Agent response: Added updateTitle helper that sets zero-width space when text is empty, changed cleanup to set "Fumi" instead of empty | Action: Updated components/TypewriterTitle.tsx
 - Agent: opencode | Fix: "it still dead static" | Agent response: Completely rewrote with separate cursor interval, proper state for displayText, empty deps array to prevent infinite loops | Action: Updated components/TypewriterTitle.tsx
+- Agent: opencode | Fix: "animation is showing on the page too" | Agent response: Removed visible text and cursor, component now returns null and only updates document.title | Action: Updated components/TypewriterTitle.tsx
 
 ## 2026-03-30
 
