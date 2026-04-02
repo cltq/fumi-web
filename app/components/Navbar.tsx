@@ -69,7 +69,7 @@ export default function Navbar() {
           boxShadow: "0 8px 32px rgba(255, 255, 255, 0.01), inset 0 1px 0 rgba(255,255,255,0.15)",
         }}
       >
-        <div className="pl-1.5 sm:pl-2">
+        {/* <div className="pl-1.5 sm:pl-2">
           <Image
             src="/vercel.svg"
             alt="logo"
@@ -86,7 +86,7 @@ export default function Navbar() {
             height: 16,
             background: "rgba(129, 129, 129, 0.85)",
           }}
-        />
+        /> */}
 
         <div
           className="absolute rounded-[65px]"
