@@ -2,7 +2,7 @@
 
 ## 2026-04-02
 
-- Commit - "Update: Change to flashing animation (disappear/appear) instead of typewriter - Files changed: components/TypewriterTitle.tsx"
+- Commit - "Update: Add technologies page with link in footer - Files changed: app/components/Footer.tsx, Created app/lib/technologies.ts, Created app/technologies/page.tsx"
 - Commit - "Update: Rename TypewriterTitle.tsx to FlashingTitle.tsx - Files changed: components/TypewriterTitle.tsx -> components/FlashingTitle.tsx, app/layout.tsx"
 
 - Commit - "Update: Add typewriter animation to web page title - Files changed: components/TypewriterTitle.tsx, app/layout.tsx"

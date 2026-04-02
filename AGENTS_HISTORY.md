@@ -2,7 +2,7 @@
 
 ## 2026-04-02
 
-- Agent: opencode | User requested: "from typewriter change to flashing (disappearing and appearing) animation instead" | Agent response: Changed from typewriter animation to flashing - text appears for 1.5s then disappears for 0.5s, repeating | Action: Updated components/TypewriterTitle.tsx
+- Agent: opencode | User requested: "at the footer, right below the copyright text. Make a button to view another page that is view all the technologies that is used in this current project" | Agent response: Added link to footer below copyright, created /technologies page with all project technologies grouped by category | Action: Updated app/components/Footer.tsx, Created app/lib/technologies.ts, Created app/technologies/page.tsx
 - Agent: opencode | User requested: "change the name to FlashingTitle.tsx" | Agent response: Renamed TypewriterTitle.tsx to FlashingTitle.tsx and updated import in layout.tsx | Action: Renamed components/TypewriterTitle.tsx to components/FlashingTitle.tsx, Updated app/layout.tsx
 
 - Agent: opencode | User requested: "can you make the web page title have a little animations like typewriter" | Agent response: Created TypewriterTitle client component that types "Fumi | Portfolio" character by character in the browser tab title | Action: Created components/TypewriterTitle.tsx, Updated app/layout.tsx

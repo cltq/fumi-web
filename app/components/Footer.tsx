@@ -30,12 +30,21 @@ export default function Footer() {
       style={{ ...glassmorphism, ...glassmorphismBorderTop }}
     >
       <div className="flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-0">
-        <p
-          className="text-xs sm:text-sm font-[family-name:var(--font-geist-pixel-square)]"
-          style={{ color: "rgba(255, 255, 255, 0.6)" }}
-        >
-          &copy; {year} Fumi. All rights reserved.
-        </p>
+        <div className="flex flex-col items-center sm:items-start gap-1">
+          <p
+            className="text-xs sm:text-sm font-[family-name:var(--font-geist-pixel-square)]"
+            style={{ color: "rgba(255, 255, 255, 0.6)" }}
+          >
+            &copy; {year} Fumi. All rights reserved.
+          </p>
+          <Link
+            href="/technologies"
+            className="text-[10px] sm:text-xs font-[family-name:var(--font-geist-mono)] transition-all duration-200 hover:opacity-80"
+            style={{ color: "rgba(255, 255, 255, 0.4)" }}
+          >
+            View all technologies
+          </Link>
+        </div>
         <div className="flex items-center gap-4">
           {links.map((social) => (
             <Link
