@@ -9,6 +9,7 @@
 - Agent: opencode | Fix: "Cannot read properties of undefined (reading '0')" error when phrases is empty | Agent response: Added guard clause to return early if phrases array is empty or undefined | Action: Updated components/TypewriterTitle.tsx
 - Agent: opencode | Fix: "Animation dead static, no animation at all" | Agent response: Added default value `["Fumi"]` for phrases prop so it works without being explicitly passed | Action: Updated components/TypewriterTitle.tsx
 - Agent: opencode | Fix: "still nothing" | Agent response: Rewrote component with simpler implementation, removed useCallback, using inline random function, added pulse animation to cursor | Action: Updated components/TypewriterTitle.tsx
+- Agent: opencode | Fix: "shows localhost:3000 instead of animation" | Agent response: Added updateTitle helper that sets zero-width space when text is empty, changed cleanup to set "Fumi" instead of empty | Action: Updated components/TypewriterTitle.tsx
 
 ## 2026-03-30
 

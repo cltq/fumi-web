@@ -38,6 +38,11 @@ export default function Typewriter({
       return Math.floor(Math.random() * (max - min + 1)) + min;
     };
 
+    const updateTitle = (text: string) => {
+      setDisplayedText(text);
+      document.title = text || "\u200B";
+    };
+
     const tick = () => {
       const currentPhrase = phrases[phraseIndexRef.current];
       const currentCharIndex = charIndexRef.current;
@@ -46,8 +51,7 @@ export default function Typewriter({
         if (currentCharIndex < currentPhrase.length) {
           charIndexRef.current = currentCharIndex + 1;
           const newText = currentPhrase.slice(0, charIndexRef.current);
-          setDisplayedText(newText);
-          document.title = newText;
+          updateTitle(newText);
           timeoutIdRef.current = setTimeout(tick, randomBetween(typingSpeed * 0.5, typingSpeed * 1.5));
         } else {
           isDeletingRef.current = true;
@@ -57,8 +61,7 @@ export default function Typewriter({
         if (currentCharIndex > 0) {
           charIndexRef.current = currentCharIndex - 1;
           const newText = currentPhrase.slice(0, charIndexRef.current);
-          setDisplayedText(newText);
-          document.title = newText;
+          updateTitle(newText);
           timeoutIdRef.current = setTimeout(tick, randomBetween(deletingSpeed * 0.5, deletingSpeed * 1.5));
         } else {
           isDeletingRef.current = false;
@@ -74,7 +77,7 @@ export default function Typewriter({
       if (timeoutIdRef.current) {
         clearTimeout(timeoutIdRef.current);
       }
-      document.title = "";
+      document.title = "Fumi";
     };
   }, [phrases, typingSpeed, deletingSpeed, pauseDuration]);
 

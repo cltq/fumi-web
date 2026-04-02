@@ -9,6 +9,7 @@
 - Commit - "Fix: Add guard clause for empty phrases array - Files changed: components/TypewriterTitle.tsx"
 - Commit - "Fix: Add default phrases value so animation works without props - Files changed: components/TypewriterTitle.tsx"
 - Commit - "Fix: Rewrite typewriter with simpler implementation - Files changed: components/TypewriterTitle.tsx"
+- Commit - "Fix: Set zero-width space when title empty, set Fumi on cleanup - Files changed: components/TypewriterTitle.tsx"
 
 ## 2026-03-30
 
