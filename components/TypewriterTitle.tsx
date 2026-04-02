@@ -3,14 +3,12 @@
 import { useEffect, useRef } from "react";
 
 const PHRASES = ["Fumi"];
-const TYPING_SPEED = 80;
-const DELETING_SPEED = 40;
+const FLASH_INTERVAL = 500;
 const PAUSE_TIME = 1500;
 
 export default function TypewriterTitle() {
-  const charIndexRef = useRef(0);
-  const isDeletingRef = useRef(false);
   const phraseIndexRef = useRef(0);
+  const isVisibleRef = useRef(true);
 
   useEffect(() => {
     let timeoutId: ReturnType<typeof setTimeout>;
@@ -18,33 +16,18 @@ export default function TypewriterTitle() {
     const tick = () => {
       const phrase = PHRASES[phraseIndexRef.current];
 
-      if (!isDeletingRef.current) {
-        charIndexRef.current++;
-        const newText = phrase.slice(0, charIndexRef.current);
-        document.title = newText || "\u200B";
+      isVisibleRef.current = !isVisibleRef.current;
+      document.title = isVisibleRef.current ? phrase : "\u200B";
 
-        if (charIndexRef.current >= phrase.length) {
-          isDeletingRef.current = true;
-          timeoutId = setTimeout(tick, PAUSE_TIME);
-          return;
-        }
-        timeoutId = setTimeout(tick, TYPING_SPEED);
+      if (!isVisibleRef.current) {
+        timeoutId = setTimeout(tick, FLASH_INTERVAL);
       } else {
-        charIndexRef.current--;
-        const newText = phrase.slice(0, charIndexRef.current);
-        document.title = newText || "\u200B";
-
-        if (charIndexRef.current <= 0) {
-          isDeletingRef.current = false;
-          phraseIndexRef.current = (phraseIndexRef.current + 1) % PHRASES.length;
-          timeoutId = setTimeout(tick, 300);
-          return;
-        }
-        timeoutId = setTimeout(tick, DELETING_SPEED);
+        timeoutId = setTimeout(tick, PAUSE_TIME);
       }
     };
 
-    timeoutId = setTimeout(tick, 500);
+    document.title = PHRASES[0];
+    timeoutId = setTimeout(tick, FLASH_INTERVAL);
 
     return () => {
       clearTimeout(timeoutId);
