@@ -2,94 +2,71 @@
 
 import { useEffect, useRef, useState } from "react";
 
-interface TypewriterProps {
-  phrases?: string[];
-  typingSpeed?: number;
-  deletingSpeed?: number;
-  pauseDuration?: number;
-  cursorBlinkSpeed?: number;
-}
+const PHRASES = ["Fumi"];
+const TYPING_SPEED = 100;
+const DELETING_SPEED = 60;
+const PAUSE_TIME = 1500;
 
-export default function Typewriter({
-  phrases = ["Fumi"],
-  typingSpeed = 80,
-  deletingSpeed = 50,
-  pauseDuration = 1500,
-  cursorBlinkSpeed = 530,
-}: TypewriterProps) {
-  const [displayedText, setDisplayedText] = useState("");
+export default function TypewriterTitle() {
+  const [displayText, setDisplayText] = useState("");
   const [showCursor, setShowCursor] = useState(true);
-
-  const phraseIndexRef = useRef(0);
   const charIndexRef = useRef(0);
   const isDeletingRef = useRef(false);
-  const timeoutIdRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const phraseIndexRef = useRef(0);
 
   useEffect(() => {
     const cursorInterval = setInterval(() => {
-      setShowCursor((prev) => !prev);
-    }, cursorBlinkSpeed);
-
+      setShowCursor((v) => !v);
+    }, 530);
     return () => clearInterval(cursorInterval);
-  }, [cursorBlinkSpeed]);
+  }, []);
 
   useEffect(() => {
-    const randomBetween = (min: number, max: number) => {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    };
-
-    const updateTitle = (text: string) => {
-      setDisplayedText(text);
-      document.title = text || "\u200B";
-    };
+    let timeoutId: ReturnType<typeof setTimeout>;
 
     const tick = () => {
-      const currentPhrase = phrases[phraseIndexRef.current];
-      const currentCharIndex = charIndexRef.current;
+      const phrase = PHRASES[phraseIndexRef.current];
 
       if (!isDeletingRef.current) {
-        if (currentCharIndex < currentPhrase.length) {
-          charIndexRef.current = currentCharIndex + 1;
-          const newText = currentPhrase.slice(0, charIndexRef.current);
-          updateTitle(newText);
-          timeoutIdRef.current = setTimeout(tick, randomBetween(typingSpeed * 0.5, typingSpeed * 1.5));
-        } else {
+        charIndexRef.current++;
+        const newText = phrase.slice(0, charIndexRef.current);
+        setDisplayText(newText);
+        document.title = newText || "\u200B";
+
+        if (charIndexRef.current >= phrase.length) {
           isDeletingRef.current = true;
-          timeoutIdRef.current = setTimeout(tick, pauseDuration);
+          timeoutId = setTimeout(tick, PAUSE_TIME);
+          return;
         }
+        timeoutId = setTimeout(tick, TYPING_SPEED + Math.random() * 50);
       } else {
-        if (currentCharIndex > 0) {
-          charIndexRef.current = currentCharIndex - 1;
-          const newText = currentPhrase.slice(0, charIndexRef.current);
-          updateTitle(newText);
-          timeoutIdRef.current = setTimeout(tick, randomBetween(deletingSpeed * 0.5, deletingSpeed * 1.5));
-        } else {
+        charIndexRef.current--;
+        const newText = phrase.slice(0, charIndexRef.current);
+        setDisplayText(newText);
+        document.title = newText || "\u200B";
+
+        if (charIndexRef.current <= 0) {
           isDeletingRef.current = false;
-          phraseIndexRef.current = (phraseIndexRef.current + 1) % phrases.length;
-          timeoutIdRef.current = setTimeout(tick, 300);
+          phraseIndexRef.current = (phraseIndexRef.current + 1) % PHRASES.length;
+          timeoutId = setTimeout(tick, 300);
+          return;
         }
+        timeoutId = setTimeout(tick, DELETING_SPEED + Math.random() * 30);
       }
     };
 
-    timeoutIdRef.current = setTimeout(tick, 500);
+    timeoutId = setTimeout(tick, 500);
 
     return () => {
-      if (timeoutIdRef.current) {
-        clearTimeout(timeoutIdRef.current);
-      }
+      clearTimeout(timeoutId);
       document.title = "Fumi";
     };
-  }, [phrases, typingSpeed, deletingSpeed, pauseDuration]);
+  }, []);
 
   return (
     <span>
-      {displayedText}
-      <span
-        className="animate-pulse"
-        style={{ opacity: showCursor ? 1 : 0 }}
-      >
-        |
-      </span>
+      {displayText}
+      <span style={{ opacity: showCursor ? 1 : 0 }}>|</span>
     </span>
   );
 }
