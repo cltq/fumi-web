@@ -28,9 +28,9 @@ export default function TechnologiesModal({ isOpen, onClose }: TechnologiesModal
   useEffect(() => {
     if (isOpen) {
       setMounted(true);
-      requestAnimationFrame(() => {
+      setTimeout(() => {
         setIsVisible(true);
-      });
+      }, 10);
     } else {
       setIsVisible(false);
       timeoutRef.current = setTimeout(() => {
