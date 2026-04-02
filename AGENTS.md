@@ -123,6 +123,7 @@ This project does not currently have a test suite. If adding tests:
 - Use a testing framework compatible with Next.js (e.g., Vitest, Jest)
 - Place tests alongside components or in a `__tests__` directory
 - Run specific tests with framework CLI (e.g., `npm test -- filename.test.ts`)
+- Don't Run dev server automatically.
 
 ---
 
