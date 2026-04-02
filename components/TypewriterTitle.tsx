@@ -3,8 +3,8 @@
 import { useEffect, useRef } from "react";
 
 const PHRASES = ["Fumi"];
-const TYPING_SPEED = 100;
-const DELETING_SPEED = 60;
+const TYPING_SPEED = 80;
+const DELETING_SPEED = 40;
 const PAUSE_TIME = 1500;
 
 export default function TypewriterTitle() {
@@ -28,7 +28,7 @@ export default function TypewriterTitle() {
           timeoutId = setTimeout(tick, PAUSE_TIME);
           return;
         }
-        timeoutId = setTimeout(tick, TYPING_SPEED + Math.random() * 50);
+        timeoutId = setTimeout(tick, TYPING_SPEED + Math.random() * 30);
       } else {
         charIndexRef.current--;
         const newText = phrase.slice(0, charIndexRef.current);
@@ -40,7 +40,7 @@ export default function TypewriterTitle() {
           timeoutId = setTimeout(tick, 300);
           return;
         }
-        timeoutId = setTimeout(tick, DELETING_SPEED + Math.random() * 30);
+        timeoutId = setTimeout(tick, DELETING_SPEED + Math.random() * 20);
       }
     };
 

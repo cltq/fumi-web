@@ -12,6 +12,7 @@
 - Commit - "Fix: Set zero-width space when title empty, set Fumi on cleanup - Files changed: components/TypewriterTitle.tsx"
 - Commit - "Fix: Complete rewrite with proper state management and cursor - Files changed: components/TypewriterTitle.tsx"
 - Commit - "Fix: Remove visible text, only update document.title - Files changed: components/TypewriterTitle.tsx"
+- Commit - "Fix: Smoother animation with faster typing/deleting speeds - Files changed: components/TypewriterTitle.tsx"
 
 ## 2026-03-30
 
