@@ -59,7 +59,7 @@ export default function Navbar() {
         className="flex items-center justify-between pointer-events-auto transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
         style={{
           width: isScrolled ? scrolledWidth : "100%",
-          padding: isScrolled ? "0.5rem 1.5rem" : "1rem 2rem",
+          padding: isScrolled ? "0.5rem 1.2rem" : "1rem 2rem",
           borderRadius: isScrolled ? "500px" : "0px",
           background: isScrolled
             ? "rgba(255, 255, 255, 0.1)"
@@ -79,13 +79,18 @@ export default function Navbar() {
       >
         {/* Logo — left side */}
         <div className="flex items-center flex-shrink-0">
-          <Image
-            src="/vercel.svg"
-            alt="logo"
-            width={16}
-            height={16}
-            className="w-4 h-4 sm:w-5 sm:h-5"
-          />
+          <button
+            onClick={() => router.push("/")}
+            className="cursor-pointer hover:scale-110 transition-transform duration-200"
+          >
+            <Image
+              src="/favicon.ico"
+              alt="logo"
+              width={24}
+              height={24}
+              className="w-5 h-5 sm:w-7 sm:h-7"
+            />
+          </button>
         </div>
 
         {/* Nav links — right side */}
@@ -96,7 +101,7 @@ export default function Navbar() {
               <button
                 key={nav.path}
                 onClick={() => router.push(nav.path)}
-                className="relative z-10 px-3 sm:px-4 py-1.5 text-xs sm:text-sm border-none outline-none cursor-pointer select-none transition-all duration-300 ease-in-out hover:scale-105 font-[family-name:var(--font-geist-mono)] rounded-md"
+                className="relative z-10 px-3 sm:px-2 py-1.5 text-xs sm:text-sm border-none outline-none cursor-pointer select-none transition-all duration-300 ease-in-out hover:scale-105 font-[family-name:var(--font-geist-mono)] rounded-md"
                 style={{
                   background: "transparent",
                   color: isActive
@@ -130,6 +135,32 @@ export default function Navbar() {
               </button>
             );
           })}
+        </div>
+        <div className="flex items-center flex-shrink-0">
+          <button
+            onClick={async () => {
+              try {
+                const response = await fetch('/api/s/haunt');
+                const data = await response.json();
+                if (data.url) {
+                  window.open(data.url, '_blank', 'noopener,noreferrer');
+                }
+              } catch (error) {
+                console.error('Failed to open link:', error);
+                // Fallback to direct opening
+                window.open('https://haunt.gg/fumi', '_blank', 'noopener,noreferrer');
+              }
+            }}
+            className="cursor-pointer hover:scale-110 transition-transform duration-200"
+          >
+            <Image
+              src="/hauntgg.png"
+              alt="logo"
+              width={25}
+              height={25}
+              className="w-5 h-5 sm:w-7 sm:h-7"
+            />
+          </button>
         </div>
       </nav>
     </div>
