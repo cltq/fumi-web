@@ -1,5 +1,9 @@
 # Git History
 
+## 2026-04-03
+
+- Commit - "Update: fix /about and /test pages to make them responsive and scrollable - Files changed: app/about/page.tsx, app/test/page.tsx"
+
 ## 2026-04-02
 
 - Commit - "Update: Add technologies page with link in footer - Files changed: app/components/Footer.tsx, Created app/lib/technologies.ts, Created app/technologies/page.tsx"

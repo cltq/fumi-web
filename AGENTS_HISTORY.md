@@ -1,5 +1,9 @@
 # Agent History
 
+## 2026-04-03
+
+- Agent: GitHub Copilot | User requested: "can you fix /about and /test because i dont know how it can scrolls. So make it responsive" | Agent response: Fixed the /about and /test pages by removing vertical centering from the main element to allow content to flow from top and enable proper scrolling, while maintaining responsive design with Tailwind classes. | Action: Updated app/about/page.tsx, Updated app/test/page.tsx
+
 ## 2026-04-02
 
 - Agent: opencode | User requested: "at the footer, right below the copyright text. Make a button to view another page that is view all the technologies that is used in this current project" | Agent response: Added link to footer below copyright, created /technologies page with all project technologies grouped by category | Action: Updated app/components/Footer.tsx, Created app/lib/technologies.ts, Created app/technologies/page.tsx
