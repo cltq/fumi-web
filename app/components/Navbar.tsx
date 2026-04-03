@@ -10,7 +10,7 @@ const navLinks = [
   { label: "Test", path: "/test" },
 ];
 
-const transition = "transition-all duration-500 ease-[cubic-bezier(0.25,0.8,0.25,1)]";
+const transition = "transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]";
 
 export default function Navbar() {
   const router = useRouter();
@@ -34,23 +34,30 @@ export default function Navbar() {
   }, []);
 
   return (
-    <div className={`fixed left-0 right-0 flex justify-center z-50 pointer-events-none ${transition}`}>
+    <div
+      className={`fixed z-50 pointer-events-none ${transition} ${
+        isScrolled
+          ? "left-1/2 top-4 -translate-x-1/2"
+          : "left-0 right-0 top-0"
+      }`}
+    >
       <nav
         ref={navRef}
         className={`relative flex items-center pointer-events-auto ${transition}`}
         style={{
           width: isScrolled ? "auto" : "100%",
-          maxWidth: isScrolled ? "none" : "100%",
+          maxWidth: isScrolled ? "420px" : "100%",
           padding: isScrolled ? "0.5rem 1.5rem" : "1rem 1.5rem",
           borderRadius: isScrolled ? "9999px" : "0px",
           justifyContent: isScrolled ? "center" : "space-between",
           background: isScrolled
-            ? "rgba(10, 10, 10, 0.7)"
-            : "rgba(10, 10, 10, 0.4)",
-          backdropFilter: isScrolled ? "blur(16px) saturate(180%)" : "blur(0px)",
-          WebkitBackdropFilter: isScrolled ? "blur(16px) saturate(180%)" : "blur(0px)",
+            ? "rgba(10, 10, 10, 0.75)"
+            : "transparent",
+          backdropFilter: isScrolled ? "blur(20px) saturate(180%)" : "blur(0px)",
+          WebkitBackdropFilter: isScrolled ? "blur(20px) saturate(180%)" : "blur(0px)",
+          border: isScrolled ? "1px solid rgba(255,255,255,0.1)" : "none",
           boxShadow: isScrolled
-            ? "0 8px 32px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255,255,255,0.08)"
+            ? "0 8px 32px rgba(0, 0, 0, 0.4)"
             : "none",
         }}
       >
