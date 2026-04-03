@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import { glassmorphism, glassmorphismBorder } from "@/app/lib/styles";
@@ -14,31 +14,13 @@ const navLinks = [
 export default function Navbar() {
   const router = useRouter();
   const pathname = usePathname();
-  const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
-  const [isReady, setIsReady] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
-  const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const isFirstRender = useRef(true);
 
   const normalizedPath = pathname?.replace(/\/$/, "") || "/";
   const activeLink =
     navLinks.find((item) => item.path === normalizedPath) || navLinks[0];
-
-  const updateIndicator = useCallback(() => {
-    const idx = navLinks.findIndex((item) => item.path === activeLink.path);
-    const btn = buttonRefs.current[idx];
-    const nav = navRef.current;
-    if (!btn || !nav) return;
-
-    const navRect = nav.getBoundingClientRect();
-    const btnRect = btn.getBoundingClientRect();
-
-    setIndicatorStyle({
-      left: btnRect.left - navRect.left,
-      width: btnRect.width,
-    });
-  }, [activeLink.path]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,23 +34,8 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      requestAnimationFrame(() => {
-        requestAnimationFrame(updateIndicator);
-      });
-    }
-
-    setIsReady(false);
-    const timer = setTimeout(() => {
-      requestAnimationFrame(() => {
-        requestAnimationFrame(updateIndicator);
-        setIsReady(true);
-      });
-    }, 50);
-
-    return () => clearTimeout(timer);
-  }, [pathname, updateIndicator]);
+    isFirstRender.current = true;
+  }, [pathname]);
 
   return (
     <div className="fixed top-3 sm:top-4 left-2 sm:left-4 right-2 sm:right-4 flex justify-center z-50 pointer-events-none">
@@ -83,7 +50,7 @@ export default function Navbar() {
             : "0 0 0 rgba(0,0,0,0)",
           width: isScrolled ? "auto" : "100%",
           maxWidth: isScrolled ? "none" : "480px",
-          justifyContent: isScrolled ? "center" : "flex-start",
+          justifyContent: isScrolled ? "center" : "space-between",
         }}
       >
         <div className="pl-1.5 sm:pl-2">
@@ -96,41 +63,11 @@ export default function Navbar() {
           />
         </div>
 
-        <div
-          className="flex-shrink-0 mx-2 sm:mx-3"
-          style={{
-            width: "1px",
-            height: 16,
-            background: "rgba(129, 129, 129, 0.85)",
-          }}
-        />
-
-        <div
-          className="absolute rounded-[65px]"
-          style={{
-            left: indicatorStyle.left,
-            width: indicatorStyle.width,
-            height: 24,
-            top: "50%",
-            transform: "translateY(-50%)",
-            background: "rgba(255, 255, 255, 0.15)",
-            boxShadow: "0 0 12px rgba(255, 255, 255, 0.25)",
-            transition: isReady
-              ? "left 0.34s cubic-bezier(0.25, 0.8, 0.25, 1), width 0.34s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.15s ease"
-              : "none",
-            opacity: isReady ? 1 : 0,
-            zIndex: 0,
-          }}
-        />
-
-        {navLinks.map((nav, i) => {
+        {navLinks.map((nav) => {
           const isActive = activeLink.path === nav.path;
           return (
             <button
               key={nav.path}
-              ref={(el) => {
-                buttonRefs.current[i] = el;
-              }}
               onClick={() => router.push(nav.path)}
               className="relative z-10 px-3 sm:px-4 py-1.5 rounded-[65px] text-xs sm:text-sm border-none outline-none cursor-pointer select-none transition-all duration-250 ease-in-out hover:scale-105 hover:text-white font-[family-name:var(--font-geist-mono)]"
               style={{
