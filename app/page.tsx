@@ -4,9 +4,9 @@ import Footer from "./components/Footer";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen items-center bg-zinc-50 font-sans dark:bg-black">
+    <div className="flex flex-col min-h-screen items-center bg-black text-zinc-100 font-sans">
       <Navbar />
-      <main className="flex flex-1 w-full max-w-5xl flex-col items-center justify-center py-12 sm:py-16 px-4 sm:px-8 bg-white dark:bg-black sm:flex-row sm:items-center sm:justify-between gap-8 sm:gap-12">
+      <main className="flex flex-1 w-full max-w-5xl flex-col items-center justify-center py-12 sm:py-16 px-4 sm:px-8 text-zinc-100 sm:flex-row sm:items-center sm:justify-between gap-8 sm:gap-12">
         <div className="flex flex-col items-center gap-4 sm:gap-6 text-center sm:items-start sm:text-left px-2">
           <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-4">
             <Image
@@ -29,11 +29,14 @@ export default function Home() {
               />
             </div>
           </div>
-          <h1 className="max-w-xs text-2xl sm:text-3xl font-semibold leading-8 sm:leading-10 tracking-tight text-black dark:text-zinc-50 font-[family-name:var(--font-kanit)]">
+          <h1 className="max-w-xs text-2xl sm:text-3xl font-semibold leading-8 sm:leading-10 tracking-tight text-zinc-100 font-[family-name:var(--font-kanit)]">
             Welcome! ยินดีต้อนรับ!
           </h1>
-          <p className="max-w-md text-base sm:text-lg leading-7 sm:leading-8 text-zinc-600 dark:text-zinc-400 font-[family-name:var(--font-kanit)]">
-            Welcome to my personal website! But unforetauately, it's still a work in progress. เว็บไซต์ส่วนตัวยังอยู่ในระหว่างการพัฒนา โปรดกลับมาใหม่ในภายหลัง.
+          <p className="max-w-md text-base sm:text-lg leading-7 sm:leading-8 text-zinc-200 font-[family-name:var(--font-kanit)]">
+            Welcome to my personal website! But unforetauately, it's still a work in progress. Come back later!
+          </p>
+          <p className="max-w-md text-base sm:text-lg leading-7 sm:leading-8 text-zinc-200 font-[family-name:var(--font-kanit)]">
+            เว็บไซต์ส่วนตัวยังอยู่ในระหว่างการพัฒนา โปรดกลับมาใหม่ในภายหลัง.
           </p>
           <p className="max-w-md text-base sm:text-xl leading-7 sm:leading-8 text-zinc-600 dark:text-zinc-400">
             <span className="font-[family-name:var(--font-geist-pixel-square)]">Visit my bio: </span><a href="https://haunt.gg/fumi" className="text-blue-500 hover:underline font-[family-name:var(--font-geist-pixel-square)]">Here</a>

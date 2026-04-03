@@ -5,8 +5,8 @@ import Image from "next/image";
 
 const navLinks = [
   { label: "Home", path: "/" },
-  // { label: "About", path: "/about" },
-  // { label: "Test", path: "/test" },
+  { label: "About", path: "/about" },
+  { label: "Test", path: "/test" },
 ];
 
 export default function Navbar() {
@@ -50,8 +50,11 @@ export default function Navbar() {
           padding: isScrolled ? "0.5rem 1.5rem" : "1rem 2rem",
           borderRadius: isScrolled ? "9999px" : "0px",
           background: isScrolled
-            ? "rgba(10, 10, 10, 0.75)"
+            ? "rgba(255, 255, 255, 0.1)"
             : "transparent",
+          border: isScrolled
+            ? "1px solid rgba(255,255,255,0.2)"
+            : "1px solid transparent",
           backdropFilter: isScrolled
             ? "blur(20px) saturate(180%)"
             : "blur(0px)",
@@ -63,9 +66,7 @@ export default function Navbar() {
           border: isScrolled
             ? "1px solid rgba(255,255,255,0.1)"
             : "1px solid transparent",
-          boxShadow: isScrolled
-            ? "0 8px 32px rgba(0, 0, 0, 0.4)"
-            : "none",
+          boxShadow: "none",
           willChange: "width, border-radius, background",
         }}
       >
@@ -92,8 +93,8 @@ export default function Navbar() {
                 style={{
                   background: "transparent",
                   color: isActive
-                    ? "rgba(255,255,255,1)"
-                    : "rgba(255,255,255,0.7)",
+                    ? "rgb(255, 255, 255)"
+                    : "rgba(255, 255, 255, 0.56)",
                   fontWeight: isActive ? 600 : 400,
                   letterSpacing: "0.02em",
                   textShadow: isActive
