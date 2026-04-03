@@ -5,6 +5,7 @@ import { GeistPixelSquare } from "geist/font/pixel";
 import { Kanit } from "next/font/google";
 import FlashingTitle from "@/components/FlashingTitle";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const kanit = Kanit({
@@ -41,6 +42,7 @@ export default function RootLayout({
         <FlashingTitle />
         {children}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
