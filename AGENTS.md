@@ -3,7 +3,7 @@
 > **Note:** Every time in a different project, if the following AGENTS.md doesn't match the current project structure, update it automatically.
 
 ## Project Overview
-Fumi is a personal website built with Next.js 16 (App Router), React 19, TypeScript, and Tailwind CSS v4. It uses Cloudflare Workers for deployment via `@opennextjs/cloudflare`.
+Fumi is a personal website built with Next.js 16 (App Router), React 19, TypeScript, and Tailwind CSS v4. It is deployed on **Vercel**.
 
 ---
 
@@ -25,12 +25,6 @@ npm run dev          # Start dev server at localhost:3000
 npm run build        # Build for production
 npm run start         # Start production server
 npm run lint          # Run ESLint
-
-# Cloudflare (OpenNext)
-npm run preview      # Preview Cloudflare build locally
-npm run deploy        # Build and deploy to Cloudflare
-npm run upload        # Build and upload to Cloudflare
-npm run cf-typegen    # Generate Cloudflare types
 ```
 
 ---
@@ -128,9 +122,8 @@ This project does not currently have a test suite. If adding tests:
 ---
 
 ## Deployment
-- Primary deployment target: **Cloudflare Workers** via `@opennextjs/cloudflare`
-- Configuration: `wrangler.jsonc` for Cloudflare settings
-- Run `npm run deploy` to build and deploy
+- Primary deployment target: **Vercel**
+- Connect GitHub repository to Vercel for automatic deployments
 
 ## Git
 - Commit with message every time the code or files changed
