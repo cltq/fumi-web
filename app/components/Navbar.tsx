@@ -139,16 +139,17 @@ export default function Navbar() {
         <div className="flex items-center flex-shrink-0">
           <button
             onClick={async () => {
+              // Open window synchronously (required by mobile browsers to avoid popup block)
+              const win = window.open('https://haunt.gg/fumi', '_blank', 'noopener,noreferrer');
               try {
                 const response = await fetch('/api/s/haunt');
                 const data = await response.json();
-                if (data.url) {
-                  window.open(data.url, '_blank', 'noopener,noreferrer');
+                if (data.url && win && !win.closed) {
+                  win.location.href = data.url;
                 }
               } catch (error) {
-                console.error('Failed to open link:', error);
-                // Fallback to direct opening
-                window.open('https://haunt.gg/fumi', '_blank', 'noopener,noreferrer');
+                console.error('Failed to fetch redirect URL:', error);
+                // Window already opened with fallback URL — nothing more to do
               }
             }}
             className="cursor-pointer hover:scale-110 transition-transform duration-200"
