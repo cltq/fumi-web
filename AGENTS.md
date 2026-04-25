@@ -139,3 +139,6 @@ This project does not currently have a test suite. If adding tests:
   3. Agent response
   4. Everything the agent does
 - Log every git commit in `GIT_HISTORY.md` with timestamp, description, and files changed
+
+## Antigravity Claude or Gemini
+- Don't do the Histories logging, i will handle it 
