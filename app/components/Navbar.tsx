@@ -24,7 +24,7 @@ export default function Navbar() {
       }}
     >
       <nav
-        className="flex items-center gap-3 pointer-events-auto px-4 py-2 rounded-full"
+        className="flex items-center gap-3 pointer-events-auto px-5 py-2 rounded-full"
         style={{
           background: "rgba(255, 255, 255, 0.1)",
           border: "1px solid rgba(255,255,255,0.2)",
@@ -54,7 +54,7 @@ export default function Navbar() {
               <button
                 key={nav.path}
                 onClick={() => router.push(nav.path)}
-                className="relative z-10 px-3 sm:px-2 py-1.5 border-none outline-none cursor-pointer select-none transition-all duration-300 ease-in-out hover:scale-105 rounded-md bg-transparent"
+                className="relative z-10 px-3 sm:px-2 py-2 border-none outline-none cursor-pointer select-none transition-all duration-300 ease-in-out hover:scale-105 rounded-md bg-transparent"
               >
                 <span
                   className={`text-sm tracking-wide ${
