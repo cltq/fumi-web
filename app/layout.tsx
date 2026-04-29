@@ -3,7 +3,7 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { GeistPixelSquare } from "geist/font/pixel";
 import { Kanit } from "next/font/google";
-import FlashingTitle from "@/components/FlashingTitle";
+import Title from "@/components/Title";
 import GridBackground from "@/components/GridBackground";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -42,10 +42,12 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${GeistSans.variable} ${GeistMono.variable} ${GeistPixelSquare.variable} ${kanit.variable}`}
     >
-      <body className="min-h-screen bg-black text-white font-sans antialiased">
+      <body className="relative min-h-screen text-white">
         <GridBackground />
-        <FlashingTitle />
-        {children}
+        <div className="relative z-10">
+          <Title />
+          {children}
+        </div>
         <Analytics />
         <SpeedInsights />
       </body>

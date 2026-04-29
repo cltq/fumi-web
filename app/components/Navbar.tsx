@@ -35,7 +35,7 @@ export default function Navbar() {
         {/* Logo — left side */}
         <button
           onClick={() => router.push("/")}
-          className="cursor-pointer hover:scale-110 transition-transform duration-200 flex-shrink-0 mr-8"
+          className="cursor-pointer hover:scale-110 transition-transform duration-200 flex-shrink-0"
         >
           <Image
             src="/favicon.ico"
@@ -93,7 +93,7 @@ export default function Navbar() {
               console.error("Failed to fetch redirect URL:", error);
             }
           }}
-          className="cursor-pointer hover:scale-110 transition-transform duration-200 flex-shrink-0 ml-8"
+          className="cursor-pointer hover:scale-110 transition-transform duration-200 flex-shrink-0"
         >
           <Image
             src="/hauntgg.png"

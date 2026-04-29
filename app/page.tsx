@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen items-center bg-black text-zinc-100 font-sans">
+    <div className="flex flex-col min-h-screen items-center text-zinc-100 font-sans">
       <Navbar />
       <main className="flex flex-1 w-full max-w-7xl flex-col items-center justify-center py-8 sm:py-12 md:py-16 px-4 sm:px-6 md:px-8 text-zinc-100 sm:flex-row sm:items-center sm:justify-between gap-6 sm:gap-8 md:gap-12">
         <div className="flex flex-col items-center gap-3 sm:gap-4 md:gap-6 text-center sm:items-start sm:text-left px-2 w-full sm:w-auto">
@@ -27,7 +27,7 @@ export default function Home() {
             className="w-full h-full rounded-lg border-none"
             title="Discord user embed"
             sandbox="allow-scripts"
-            src="https://widgets.vendicated.dev/user?id=969088519161139270&theme=dark&banner=true&full-banner=true&rounded-corners=true&discord-icon=true&badges=false&guess-nitro=false&"
+            src="https://widgets.vendicated.dev/user?id=969088519161139270&theme=dark&banner=true&full-banner=true&rounded-corners=true&discord-icon=true&badges=true&guess-nitro=true&"
           />
         </div>
       </main>
