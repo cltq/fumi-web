@@ -35,7 +35,7 @@ export default function Navbar() {
         {/* Logo — left side */}
         <button
           onClick={() => router.push("/")}
-          className="cursor-pointer hover:scale-110 transition-transform duration-200 flex-shrink-0"
+          className="cursor-pointer hover:scale-110 transition-transform duration-200 flex-shrink-0 mr-4"
         >
           <Image
             src="/favicon.ico"
