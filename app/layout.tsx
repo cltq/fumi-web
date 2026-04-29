@@ -7,8 +7,8 @@ import FlashingTitle from "@/components/FlashingTitle";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Providers } from "./providers";
-import "@once-ui-system/core/dist/css/tokens.css";
-import "@once-ui-system/core/dist/css/styles.css";
+import "@once-ui-system/core/css/tokens.css";
+import "@once-ui-system/core/css/styles.css";
 import "./globals.css";
 
 const kanit = Kanit({
