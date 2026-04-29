@@ -1,7 +1,6 @@
 "use client";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
-import { Row, Text } from "@once-ui-system/core";
 
 const navLinks = [
   { label: "Home", path: "/" },
@@ -24,20 +23,14 @@ export default function Navbar() {
         top: "1rem",
       }}
     >
-      <Row
-        as="nav"
-        gap="12"
-        paddingX="16"
-        paddingY="8"
-        radius="full"
-        background="surface"
-        border="neutral-alpha-weak"
-        className="pointer-events-auto"
+      <nav
+        className="flex items-center gap-3 pointer-events-auto px-4 py-2 rounded-full"
         style={{
+          background: "rgba(255, 255, 255, 0.1)",
+          border: "1px solid rgba(255,255,255,0.2)",
           backdropFilter: "blur(20px) saturate(180%)",
           WebkitBackdropFilter: "blur(20px) saturate(180%)",
         }}
-        vertical="center"
       >
         {/* Logo — left side */}
         <button
@@ -54,35 +47,33 @@ export default function Navbar() {
         </button>
 
         {/* Nav links */}
-        <Row gap="4" vertical="center">
+        <div className="flex items-center gap-1">
           {navLinks.map((nav) => {
             const isActive = activeLink.path === nav.path;
             return (
               <button
                 key={nav.path}
                 onClick={() => router.push(nav.path)}
-                className="relative z-10 px-3 sm:px-2 py-1.5 border-none outline-none cursor-pointer select-none transition-all duration-300 ease-in-out hover:scale-105 rounded-md"
-                style={{
-                  background: "transparent",
-                }}
+                className="relative z-10 px-3 sm:px-2 py-1.5 border-none outline-none cursor-pointer select-none transition-all duration-300 ease-in-out hover:scale-105 rounded-md bg-transparent"
               >
-                <Text
-                  variant="label-default-s"
-                  onBackground={isActive ? "neutral-strong" : "neutral-weak"}
+                <span
+                  className={`text-sm tracking-wide ${
+                    isActive
+                      ? "text-white font-semibold"
+                      : "text-white/60 font-normal"
+                  }`}
                   style={{
-                    fontWeight: isActive ? 600 : 400,
-                    letterSpacing: "0.02em",
                     textShadow: isActive
                       ? "0 0 16px rgba(255, 255, 255, 0.5)"
                       : "none",
                   }}
                 >
                   {nav.label}
-                </Text>
+                </span>
               </button>
             );
           })}
-        </Row>
+        </div>
 
         {/* Haunt logo — right side */}
         <button
@@ -112,7 +103,7 @@ export default function Navbar() {
             className="w-5 h-5 sm:w-7 sm:h-7"
           />
         </button>
-      </Row>
+      </nav>
     </div>
   );
 }

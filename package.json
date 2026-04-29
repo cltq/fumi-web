@@ -9,7 +9,6 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@once-ui-system/core": "^1.6.4",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "geist": "^1.7.0",
