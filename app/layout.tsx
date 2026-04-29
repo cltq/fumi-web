@@ -6,6 +6,9 @@ import { Kanit } from "next/font/google";
 import FlashingTitle from "@/components/FlashingTitle";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Providers } from "./providers";
+import "@once-ui-system/core/dist/css/tokens.css";
+import "@once-ui-system/core/dist/css/styles.css";
 import "./globals.css";
 
 const kanit = Kanit({
@@ -42,8 +45,10 @@ export default function RootLayout({
       className={`${GeistSans.variable} ${GeistMono.variable} ${GeistPixelSquare.variable} ${kanit.variable}`}
     >
       <body className="min-h-screen bg-black text-white font-sans antialiased">
-        <FlashingTitle />
-        {children}
+        <Providers>
+          <FlashingTitle />
+          {children}
+        </Providers>
         <Analytics />
         <SpeedInsights />
       </body>
